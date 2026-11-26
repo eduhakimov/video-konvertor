@@ -1,0 +1,109 @@
+{
+  "slug": "video-konvertor",
+  "exe_name": "FFmpegQobigi",
+  "version": "1.0.0",
+  "accent": "#e11d48",
+  "folder": "FFmpeg qobig'i",
+  "name": {
+    "uz": "FFmpeg qobig'i",
+    "ru": "Оболочка FFmpeg",
+    "en": "FFmpeg Shell"
+  },
+  "description": {
+    "uz": "FFmpeg uchun qulay oyna: videoni siqish, Telegram, Instagram Reels, YouTube va WhatsApp uchun tayyorlash, formatni o'zgartirish, ovozni ajratish, GIF, kesish, burish, birlashtirish va kadrlarni olish. Navbat, jarayon foizi va taxminiy hajm bilan. To'liq offline.",
+    "ru": "Удобная оболочка FFmpeg: сжатие видео, подготовка для Telegram, Instagram Reels, YouTube и WhatsApp, смена формата, извлечение звука, GIF, обрезка, поворот, склейка и извлечение кадров. Очередь, процент выполнения и оценка размера. Полностью офлайн.",
+    "en": "A desktop front-end for FFmpeg: compress video, prepare it for Telegram, Instagram Reels, YouTube and WhatsApp, change format, extract audio, make GIFs, trim, rotate, merge and extract frames. Batch queue, live progress and size estimates. Works offline."
+  },
+  "features": {
+    "uz": [
+      "13 ta tayyor andoza: siqish, Telegram (≤2 GB), Reels 1080×1920, YouTube 1080p, WhatsApp va boshqalar",
+      "Sudrab-tashlash navbati, har bir fayl uchun jarayon foizi va bekor qilish",
+      "Chiqish faylining taxminiy hajmi oldindan ko'rsatiladi",
+      "Apparat kodlovchini (NVIDIA / AMD / Intel) avtomatik aniqlaydi",
+      "GIF (sifatli palitra), kesish, burish, o'lcham, ovozsiz qilish, kadrlarni olish",
+      "Videolarni birlashtirish (tez yoki qayta kodlab)",
+      "ffprobe media ma'lumoti paneli",
+      "Kengaytirilgan rejim: ffmpeg buyrug'ini ko'rish va tahrirlash",
+      "O'zbek, rus, ingliz tillari; yorug' va qorong'i mavzu"
+    ],
+    "ru": [
+      "13 готовых шаблонов: сжатие, Telegram (≤2 ГБ), Reels 1080×1920, YouTube 1080p, WhatsApp и др.",
+      "Очередь с перетаскиванием, процент для каждого файла и отмена",
+      "Оценка размера результата заранее",
+      "Автоматически находит аппаратный кодировщик (NVIDIA / AMD / Intel)",
+      "GIF с палитрой, обрезка, поворот, разрешение, удаление звука, извлечение кадров",
+      "Склейка видео (быстро или с перекодированием)",
+      "Панель сведений ffprobe",
+      "Расширенный режим: просмотр и правка команды ffmpeg",
+      "Узбекский, русский, английский; светлая и тёмная тема"
+    ],
+    "en": [
+      "13 ready presets: compress, Telegram (≤2 GB), Reels 1080×1920, YouTube 1080p, WhatsApp and more",
+      "Drag & drop batch queue with per-file progress and cancel",
+      "Estimated output size shown in advance",
+      "Detects hardware encoders (NVIDIA / AMD / Intel) automatically",
+      "Palette GIF, trim, rotate, resize, remove audio, extract frames",
+      "Merge videos (fast copy or re-encode)",
+      "ffprobe media info panel",
+      "Advanced mode: view and edit the ffmpeg command",
+      "Uzbek, Russian, English; light and dark themes"
+    ]
+  },
+  "category": "Video / multimedia",
+  "topics": [
+    "ffmpeg",
+    "video-converter",
+    "video-compressor",
+    "gif"
+  ],
+  "min_os": "Windows 10 (1809+) / Windows 11, x64",
+  "build": {
+    "mode": "onedir",
+    "add_binary": [
+      [
+        "vendor/ffmpeg/ffmpeg.exe",
+        "ffmpeg"
+      ],
+      [
+        "vendor/ffmpeg/ffprobe.exe",
+        "ffmpeg"
+      ]
+    ],
+    "add_data": [
+      [
+        "vendor/ffmpeg/LICENSE.txt",
+        "ffmpeg"
+      ]
+    ],
+    "excludes": [
+      "PySide6.QtMultimedia",
+      "PySide6.QtNetwork",
+      "PySide6.QtQml",
+      "PySide6.QtQuick",
+      "matplotlib",
+      "numpy",
+      "PIL"
+    ]
+  },
+  "font": "Bahnschrift",
+  "palette": {
+    "light": {
+      "bg": "#f2f3f5",
+      "surface": "#ffffff",
+      "surface2": "#e9ebef",
+      "border": "#d3d7de",
+      "text": "#16181d",
+      "muted": "#5c6370",
+      "hover": "#e3e6eb"
+    },
+    "dark": {
+      "bg": "#16181d",
+      "surface": "#1f2228",
+      "surface2": "#282c34",
+      "border": "#353a45",
+      "text": "#e6e8ec",
+      "muted": "#9aa1ad",
+      "hover": "#2c3039"
+    }
+  }
+}

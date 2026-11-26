@@ -1,0 +1,14 @@
+QFrame#Card { border-radius: 4px; }
+QPushButton { border-radius: 3px; padding: 7px 16px; }
+QLineEdit, QComboBox, QSpinBox, QDoubleSpinBox, QPlainTextEdit { border-radius: 3px; }
+QLabel#Title { font-size: 17pt; font-weight: 600; letter-spacing: 0.3px; }
+QListWidget#NavList { padding: 10px 0; }
+QListWidget#NavList::item { border-radius: 0; padding: 11px 18px; margin: 0; }
+QListWidget#NavList::item:selected { background: {hover}; border-left: 3px solid {accent}; color: {text}; }
+QHeaderView::section { font-weight: 600; font-size: 9pt; color: {muted}; }
+QTableWidget { border-radius: 4px; }
+QFrame#DropArea { border-radius: 4px; border: 1px dashed {border}; }
+QFrame#DropArea[active="true"] { border: 1px solid {accent}; }
+QProgressBar { border-radius: 2px; }
+QProgressBar::chunk { border-radius: 2px; }
+QSlider::handle:horizontal { border-radius: 3px; width: 10px; }
