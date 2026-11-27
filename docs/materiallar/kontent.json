@@ -1,0 +1,440 @@
+{
+  "nom": "FFmpeg qobig‘i",
+  "muallif": "Hakimov Bahtiyorjon",
+  "maqola": {
+    "udk": "004.42:004.932",
+    "sarlavha": {
+      "uz": "FFmpeg uchun andozalarga asoslangan grafik qobiq: video va audio fayllarni oflayn konvertatsiya qilish, hajmni oldindan baholash va apparat kodlovchilardan foydalanish",
+      "ru": "Графическая оболочка FFmpeg на основе пресетов: офлайн-конвертация видео- и аудиофайлов, предварительная оценка размера и использование аппаратных кодировщиков",
+      "en": "A preset-based graphical shell for FFmpeg: offline conversion of video and audio files, output size estimation and use of hardware encoders"
+    },
+    "annotatsiya": {
+      "uz": "Maqolada FFmpeg dasturi uchun ishlab chiqilgan “FFmpeg qobig‘i” grafik interfeysli dasturi tavsiflanadi. Dastur video va audio fayllar bilan ishlashning keng tarqalgan vazifalarini o‘n uchta tayyor andoza ko‘rinishida taqdim etadi: videoni siqish, Telegram, Instagram Reels, YouTube va WhatsApp uchun tayyorlash, formatni o‘zgartirish, ovozni ajratish, GIF yasash, kesish, o‘lchamni o‘zgartirish, burish, ovozni olib tashlash va kadrlarni rasmga olish. Fayllar navbat orqali qayta ishlanadi, har bir fayl uchun jarayon foizi va chiqish faylining taxminiy hajmi ko‘rsatiladi. Dastur apparat H.264 kodlovchilarni avtomatik aniqlaydi, videolarni birlashtiradi, ffprobe ma’lumotlarini ko‘rsatadi va kengaytirilgan rejimda buyruqni tahrirlash imkonini beradi. Arxitektura, hisoblash modellari va testlar yoritiladi.",
+      "ru": "В статье описывается программа «FFmpeg qobig‘i» («Оболочка FFmpeg») с графическим интерфейсом для FFmpeg. Программа представляет распространённые задачи работы с видео и аудио в виде тринадцати готовых пресетов: сжатие видео, подготовка для Telegram, Instagram Reels, YouTube и WhatsApp, смена формата, извлечение звука, создание GIF, обрезка, изменение размера, поворот, удаление звука и сохранение кадров в изображения. Файлы обрабатываются через очередь, для каждого файла отображаются процент выполнения и ориентировочный размер результата. Программа автоматически определяет аппаратные кодировщики H.264, объединяет видео, показывает сведения ffprobe и в расширенном режиме позволяет редактировать команду. Рассматриваются архитектура, расчётные модели и тесты.",
+      "en": "The paper describes “FFmpeg qobig‘i” (FFmpeg Shell), a graphical application built on top of FFmpeg. The program offers common video and audio tasks as thirteen ready-made presets: video compression, preparation for Telegram, Instagram Reels, YouTube and WhatsApp, container change, audio extraction, GIF creation, trimming, resizing, rotation, audio removal and saving frames as images. Files are processed through a queue, and progress and the estimated output size are shown for each file. The program automatically detects hardware H.264 encoders, merges videos, displays ffprobe information and, in an advanced mode, allows the generated command to be edited. The architecture, calculation models and tests are discussed."
+    },
+    "kalit": {
+      "uz": [
+        "FFmpeg",
+        "video konvertatsiya",
+        "grafik interfeys",
+        "andoza",
+        "H.264",
+        "apparat kodlovchi",
+        "oflayn dastur"
+      ],
+      "ru": [
+        "FFmpeg",
+        "конвертация видео",
+        "графический интерфейс",
+        "пресет",
+        "H.264",
+        "аппаратный кодировщик",
+        "офлайн-приложение"
+      ],
+      "en": [
+        "FFmpeg",
+        "video conversion",
+        "graphical interface",
+        "preset",
+        "H.264",
+        "hardware encoder",
+        "offline application"
+      ]
+    },
+    "bolimlar": [
+      {
+        "sarlavha": "Kirish",
+        "matn": [
+          "Video va audio materiallar bilan ishlash bugungi kunda faqat mutaxassislarning vazifasi emas. O‘qituvchi dars yozuvini masofaviy ta’lim platformasiga joylashtirishi, talaba loyiha videosini ijtimoiy tarmoqqa tayyorlashi, tashkilot xodimi tadbir yozuvini messenjer orqali yuborishi, jurnalist intervyudan ovozni ajratib olishi kerak bo‘ladi. Bu vazifalarning har birida fayl ma’lum platforma talablariga – hajm, o‘lcham, kadr chastotasi, kodek va formatga – moslashtirilishi lozim.",
+          "Raqamli media bilan ishlash sohasida FFmpeg loyihasi keng qo‘llanadigan ochiq vositalardan biri hisoblanadi. U deyarli barcha video va audio formatlarini o‘qish, yozish va o‘zgartirish imkonini beradi. Biroq FFmpeg buyruq satri orqali boshqariladi: oddiy foydalanuvchi uchun kodek nomlari, bitreyt, filtrlar zanjiri va parametrlar sintaksisini bilish talab qilinadi. Bitta noto‘g‘ri belgi butun buyruqning ishlamasligiga olib keladi, natija hajmini oldindan bilish esa hisob-kitobni talab qiladi.",
+          "Ko‘plab foydalanuvchilar bu muammoni onlayn konvertorlar orqali hal qiladi. Ammo bu yo‘l katta hajmdagi videolarni tarmoqqa yuklashni, internet aloqasining tezligiga bog‘liqlikni va shaxsiy yoki xizmat materiallarini uchinchi tomonga berishni anglatadi. “Raqamli O‘zbekiston – 2030” strategiyasida raqamli kontent yaratish va ta’limni raqamlashtirish vazifalari belgilangan; bu vazifalarni bajarishda mahalliy kompyuterda ishlaydigan, foydalanish oson vositalar zarur.",
+          "Tadqiqotning maqsadi – FFmpeg imkoniyatlarini oddiy foydalanuvchi uchun tushunarli andozalar, navbat va hajmni oldindan baholash bilan taqdim etuvchi, o‘zbek tilidagi interfeysga ega oflayn grafik qobiqni ishlab chiqish va uning hisoblash modellarini asoslash. Bu maqsadga erishish uchun quyidagi vazifalar hal qilindi: ko‘p uchraydigan vazifalarni andozalarga ajratish; har bir andoza uchun FFmpeg buyrug‘ini avtomatik tuzish; chiqish hajmini baholash modelini yaratish; apparat kodlovchilarni aniqlash va zaxira variantini ta’minlash; jarayonni kuzatish va bekor qilish; manba fayllarni himoya qilish; avtomatik testlar bilan tekshirish.",
+          "Maqolaning amaliy yangiligi shundaki, unda FFmpeg imkoniyatlari mahalliy foydalanuvchilar ko‘p qo‘llaydigan platformalar (Telegram, WhatsApp, Instagram, YouTube) talablariga yo‘naltirilgan andozalar ko‘rinishida tashkil etilgan, natija hajmi esa kodlashdan oldin taxminiy model asosida ko‘rsatiladi. Bu foydalanuvchiga “natija platformaga sig‘adimi” degan savolga ish boshlanishidan oldin javob olish imkonini beradi."
+        ]
+      },
+      {
+        "sarlavha": "Muammoning qo‘yilishi va mavjud yechimlar tahlili",
+        "matn": [
+          "Video konvertatsiya vositalarini bir necha guruhga ajratish mumkin. Birinchi guruh – brauzer orqali ishlaydigan onlayn konvertorlar. Ular o‘rnatishni talab qilmaydi, lekin fayl hajmi bo‘yicha cheklovlarga ega bo‘lishi, faylni tashqi serverga yuklashni talab qilishi va natijani yuklab olish uchun qo‘shimcha vaqt sarflashi mumkin.",
+          "Ikkinchi guruh – ko‘p funksiyali ish stoli video konvertorlari va video muharrirlar. Ularning bir qismi keng imkoniyatlarga ega, lekin interfeysi murakkab yoki pullik; ba’zilari esa o‘rnatish jarayonida qo‘shimcha dasturlarni taklif qiladi. Uchinchi guruh – FFmpeg dasturini to‘g‘ridan-to‘g‘ri buyruq satrida ishlatish. Bu eng moslashuvchan yo‘l, ammo u mutaxassislik bilimini talab qiladi.",
+          "Tahlil asosida ishlab chiqiladigan dasturga quyidagi talablar qo‘yildi:",
+          "- barcha amallar internetsiz bajarilishi, FFmpeg va FFprobe dastur bilan birga yetkazilishi;",
+          "- ko‘p uchraydigan vazifalarning platformalar talablariga mos tayyor andozalar ko‘rinishida taqdim etilishi;",
+          "- bir nechta faylni navbat orqali qayta ishlash, har bir fayl uchun jarayon foizi va holatni ko‘rsatish;",
+          "- natija faylining taxminiy hajmini ish boshlanishidan oldin ko‘rsatish;",
+          "- kompyuterda mavjud apparat kodlovchilardan foydalanish va ular ishlamasa, dasturiy kodlovchiga o‘tish;",
+          "- manba fayllar va mavjud natijalar ustiga yozmaslik;",
+          "- tajribali foydalanuvchi uchun tuzilgan buyruqni ko‘rish va tahrirlash imkoniyati;",
+          "- o‘zbek, rus va ingliz tillaridagi interfeys."
+        ]
+      },
+      {
+        "sarlavha": "Tadqiqot metodologiyasi va dasturiy arxitektura",
+        "matn": [
+          "Dastur Python 3.12 tilida yozilgan, grafik interfeysi PySide6 (Qt 6) asosida qurilgan. Media fayllarni qayta ishlash uchun FFmpeg, ularning texnik ma’lumotlarini o‘qish uchun FFprobe ishlatiladi; ikkala dastur LGPL litsenziyali yig‘ma ko‘rinishida dastur bilan birga tarqatiladi. Dastur PyInstaller yordamida yig‘iladi va portativ ZIP arxiv ko‘rinishida tarqatiladi.",
+          "Dastur paketi quyidagi modullardan iborat:",
+          "- **ffbin** – FFmpeg va FFprobe fayllarini topish, kompyuterda ishlaydigan H.264 kodlovchilarni aniqlash;",
+          "- **media** – FFprobe chiqishini (JSON) tahlil qilib, davomiylik, o‘lcham, kadr chastotasi, bitreyt, kodek, audio parametrlari va burilish ma’lumotini olish;",
+          "- **presets** – andozalar, vaqtni tahlil qilish, chiqish yo‘lini tanlash, video parametrlarini rejalashtirish, FFmpeg buyruqlarini tuzish, birlashtirish buyruqlari va hajmni baholash;",
+          "- **runner** – FFmpeg jarayonini ishga tushirish, jarayon haqidagi chiqishdan foizni o‘qish va bekor qilish;",
+          "- **window** – asosiy oyna va uning uch sahifasi: “Konvertatsiya”, “Birlashtirish”, “Media ma’lumoti”;",
+          "- **strings** – uch tildagi interfeys matnlari.",
+          "Arxitekturaning muhim tamoyili – buyruq tuzish mantig‘ining interfeysdan to‘liq ajratilganligi. Presets moduli kirish sifatida vazifa tavsifi (andoza va uning parametrlari) va media ma’lumotini qabul qilib, bajariladigan buyruqlar ro‘yxatini qaytaradi. Shu tufayli har bir andoza grafik interfeyssiz, avtomatik testlarda tekshiriladi.",
+          "**Sifat modeli.** Foydalanuvchi sifatni 0 dan 100 gacha foizlarda belgilaydi. Bu qiymat x264 kodlovchisining CRF shkalasiga mos qiymatga chiziqli o‘tkaziladi: 0% – CRF 35, 100% – CRF 18. Masalan, 60% sifat taxminan CRF 25 ga to‘g‘ri keladi va interfeysda “60% (≈ CRF 25)” ko‘rinishida ko‘rsatiladi. Dastur turli kodlovchilar bilan ishlagani sababli kodlash CRF bo‘yicha emas, bitreyt bo‘yicha boshqariladi. Bitreyt piksel uchun bitlar soni modeli asosida hisoblanadi: CRF 23 da bir piksel uchun taxminan 0,085 bit qabul qilinadi va CRF har 6 birlikka oshganda bitreyt ikki baravar kamayadi. Video bitreyti kenglik, balandlik, kadr chastotasi (60 dan oshmagan holda) va piksel uchun bitlar ko‘paytmasidan topiladi, eng kichik qiymat 150 kbit/s bilan cheklanadi.",
+          "**Andozalarga xos cheklovlar.** “Videoni siqish” andozasida video bitreyti manba video bitreytining 85 foizidan oshmaydi, ya’ni siqish natijasi manbadan katta bo‘lmasligi ko‘zda tutilgan. “Telegram uchun” andozasida tasvir balandligi 1080 piksel bilan cheklanadi, bitreyt esa natija 2 GB chegarasining 97 foizidan oshmaydigan qilib davomiylik asosida hisoblanadi. “WhatsApp uchun” andozasi 720 piksel balandlik, 30 kadr/s va 2000 kbit/s chegaralarini qo‘llaydi. “Instagram Reels” andozasi 1080×1920 vertikal kadr va 30 kadr/s, “YouTube 1080p” esa 1920×1080 kadr va 192 kbit/s audio bilan ishlaydi. Reels uchun gorizontal video uch usulda joylanadi: xira fon bilan, qora hoshiya bilan yoki kesib to‘ldirish orqali.",
+          "**Hajmni baholash.** Har bir fayl uchun chiqish hajmi kodlashdan oldin hisoblanadi. Video andozalarda hajm video va audio bitreytlari yig‘indisini davomiylikka ko‘paytirish va konteyner xarajati uchun kichik qo‘shimcha qo‘shish orqali topiladi. Ovozni ajratishda audio bitreyti (WAV uchun namuna chastotasi va kanallar soni asosida), qayta kodlamasdan bajariladigan amallarda manba hajmining tanlangan qismga mos ulushi, GIF va kadrlarni olishda esa piksellar soni va kadrlar soni asosidagi taxminiy koeffitsiyentlar ishlatiladi. Natija jadvalning “Taxminan” ustunida va “Jami taxminiy hajm” qatorida ko‘rsatiladi. Bu qiymat taxminiy ekanligi interfeysda “~” belgisi bilan ta’kidlanadi.",
+          "**Kodlovchini tanlash.** Dastur kompyuterda H.264 kodlovchilarini quyidagi tartibda sinab ko‘radi: NVIDIA NVENC, AMD AMF, Intel Quick Sync, Windows Media Foundation va dasturiy OpenH264. Har bir kodlovchi qisqa sinov kodlashi orqali tekshiriladi, natija keshda saqlanadi. “Avto (eng tezi)” rejimida birinchi ishlaydigan kodlovchi tanlanadi; buyruq xato bilan tugasa, dastur dasturiy kodlovchi bilan zaxira buyruqni bajaradi. WEBM formati uchun VP9, AVI uchun MPEG-4 kodlovchilari ishlatiladi.",
+          "**Jarayonni kuzatish.** FFmpeg jarayon haqidagi ma’lumotni standart chiqishga kalit-qiymat ko‘rinishida yozadigan rejimda ishga tushiriladi. Runner moduli bu qatorlardan joriy vaqtni o‘qib, uni davomiylikka nisbatan foizga aylantiradi. Jarayon alohida oqimda bajariladi va istalgan paytda to‘xtatilishi mumkin.",
+          "**Xavfsizlik.** Chiqish fayli nomi manba nomiga andoza qo‘shimchasi qo‘shish orqali hosil qilinadi; bunday fayl mavjud bo‘lsa, nomga qavs ichida tartib raqami qo‘shiladi, ya’ni hech bir mavjud fayl ustiga yozilmaydi. Birlashtirishda natija fayli kiruvchi fayllardan biri bilan bir xil bo‘lsa, amal rad etiladi. Dastur tarmoqqa murojaat qilmaydi, sozlamalar foydalanuvchining %APPDATA% papkasida saqlanadi.",
+          "**Media ma’lumotlarini o‘qish.** Har bir fayl navbatga qo‘shilganda FFprobe orqali uning konteyner va oqimlar haqidagi ma’lumoti JSON ko‘rinishida olinadi. Media moduli bu ma’lumotdan davomiylik, umumiy va video bitreyt, kenglik va balandlik, kadr chastotasi, audio namuna chastotasi va kanallar soni, shuningdek videoning burilish metama’lumotini ajratadi. Burilish hisobga olinishi muhim: telefon kamerasida vertikal suratga olingan video ko‘pincha gorizontal kadr va 90° burilish belgisi bilan saqlanadi, shuning uchun ko‘rsatiladigan o‘lcham burilishni inobatga olgan holda hisoblanadi.",
+          "**Vaqtni tahlil qilish.** Boshlanish va tugash vaqtlari soniyalarda (“90”), daqiqa va soniyada (“1:30”) yoki to‘liq ko‘rinishda (“00:01:30.5”) kiritilishi mumkin. Tahlilchi noto‘g‘ri yozuvni rad etadi, tugash vaqti boshlanishdan katta bo‘lishini va boshlanish vaqti fayl davomiyligidan oshmasligini tekshiradi. Effektiv davomiylik (tanlangan bo‘lak uzunligi) jarayon foizi va hajm baholashda ishlatiladi.",
+          "**Kadrlarni olish.** “Kadrlarni rasmga olish” andozasida FFmpeg kadr chastotasi filtri har N soniyada bitta kadr qoldiradigan qilib sozlanadi, rasmlar esa manba nomi va besh xonali tartib raqami bilan alohida papkaga yoziladi. Olinadigan kadrlar soni davomiylik va interval asosida oldindan hisoblanadi."
+        ]
+      },
+      {
+        "sarlavha": "Amalga oshirish va asosiy funksiyalar",
+        "matn": [
+          "Asosiy oyna chap tomonda uch bandli navigatsiya paneli va o‘ng tomonda tanlangan sahifadan iborat.",
+          "**Konvertatsiya sahifasi** (“Video va audio konvertatsiya”) fayllarni sudrab tashlash maydoni, navbat jadvali va “Andoza va sozlamalar” kartochkasidan iborat. Jadvalda “Fayl”, “Davomiylik”, “O‘lcham”, “Hajmi”, “Taxminan”, “Jarayon” va “Holat” ma’lumotlari ko‘rsatiladi. Kartochkada andoza tavsifi, “Andoza” ro‘yxati va tanlangan andozaga mos parametrlar chiqadi: “Sifat” slayderi, “Balandlik”, “Joylash” usuli, “Format”, “Tez (qayta kodlamasdan)” belgisi, “Bitreyt”, GIF uchun “Kadr/s” va “Kenglik (px)”, burish “Amal”i, “Har N soniyada” va “Rasm formati”, “Boshlanish / Tugash” vaqtlari, “Kodlovchi” va “Saqlash papkasi”. Har bir andoza uchun faqat unga tegishli parametrlar ko‘rsatiladi.",
+          "O‘n uchta andoza quyidagilardan iborat: “Videoni siqish”, “Telegram uchun”, “Instagram Reels (1080×1920)”, “YouTube 1080p”, “WhatsApp uchun”, “Formatni o‘zgartirish” (MP4, MKV, MOV, WEBM, AVI; “Tez” rejimda qayta kodlamasdan), “Ovozni ajratib olish” (MP3, AAC (M4A) yoki WAV), “GIF yasash” (sifatli palitra bilan), “Kesib olish”, “O‘lchamni o‘zgartirish” (proporsiya saqlanadi), “Burish / aks ettirish” (90° soat yo‘nalishida yoki teskari, 180°, gorizontal yoki vertikal aks), “Ovozni olib tashlash” (video qayta kodlanmaydi) va “Kadrlarni rasmga olish” (har N soniyada JPG yoki PNG). GIF yasashda ikki bosqichli palitra usuli qo‘llanadi: avval video kadrlari bo‘yicha optimal palitra hosil qilinadi, so‘ng tasvir shu palitra bilan aralashtirish (dithering) usulida GIF ga aylantiriladi.",
+          "Navbatdagi fayllar ketma-ket qayta ishlanadi: pastki qismda umumiy jarayon chizig‘i va “2 / 4 fayl” ko‘rinishidagi hisoblagich, jadvalda esa har bir faylning foizi va holati (“Navbatda”, “Bajarilmoqda”, “Tayyor”, “Xato”, “Bekor qilindi”) ko‘rsatiladi. Yakunda muvaffaqiyatli va xato bilan tugagan fayllar soni haqida xabar chiqadi.",
+          "**Kengaytirilgan rejim.** “Buyruq (kengaytirilgan)” tugmasi navbatda tanlangan fayl uchun tuzilgan FFmpeg buyrug‘ini oynada ko‘rsatadi. Foydalanuvchi uni tahrirlab, “Shu faylga qo‘llash” tugmasi bilan faqat shu fayl uchun ishlatishi yoki “Asl holiga qaytarish” mumkin. Bunday fayl jadvalda “Qo‘lda buyruq” holati bilan belgilanadi. Bu rejim FFmpeg dasturini o‘rganuvchilar uchun ham foydali: andoza qanday buyruqqa aylanishini ko‘rish mumkin.",
+          "**Birlashtirish sahifasi** (“Fayllarni birlashtirish”) videolarni ketma-ket bitta faylga qo‘shadi. Fayllar tartibi “Yuqoriga” va “Pastga” tugmalari bilan o‘zgartiriladi. Dastur fayllarning kodek, o‘lcham va audio parametrlarini solishtirib, tez birlashtirish mumkinligini aniqlaydi: mos kelsa, FFmpeg dasturining concat demultipleksori orqali qayta kodlamasdan birlashtiriladi (“Fayllar bir xil formatda, tez birlashtirish mumkin.”), aks holda barcha bo‘laklar bir xil o‘lcham va kadr chastotasiga keltirilib, filtr orqali qayta kodlanadi.",
+          "**Media ma’lumoti sahifasi** faylning konteyneri, davomiyligi, hajmi, umumiy bitreyti, video va audio oqimlari parametrlari hamda har bir oqim haqidagi ma’lumotni FFprobe yordamida jadval ko‘rinishida ko‘rsatadi. “Hammasini nusxalash” tugmasi ma’lumotni almashish buferiga ko‘chiradi, “Navbatga qo‘shish” esa faylni konvertatsiya navbatiga yuboradi.",
+          "**Sozlamalarni saqlash.** Foydalanuvchi tanlagan andoza va uning parametrlari, saqlash papkasi va kodlovchi tanlovi sozlamalar faylida saqlanadi va keyingi ishga tushirishda tiklanadi. Shu tufayli muntazam bir xil vazifani bajaruvchi foydalanuvchi (masalan, har hafta dars yozuvlarini siquvchi o‘qituvchi) sozlamalarni har safar qayta tanlamaydi.",
+          "**Xato holatlarini qayta ishlash.** Navbatdagi fayl uchun andoza talab qiladigan oqim bo‘lmasa (masalan, audio fayldan GIF yasash yoki ovozsiz videodan ovoz ajratish), fayl “Xato” holatini oladi va tushunarli sabab ko‘rsatiladi, navbatning qolgan qismi esa davom etadi. Chiqish papkasini yaratib bo‘lmasa yoki boshqa jiddiy xato yuz bersa, foydalanuvchiga aniq xabar beriladi."
+        ],
+        "rasmlar": [
+          {
+            "fayl": "docs/screenshots/1.png",
+            "izoh": "“Konvertatsiya” sahifasi: to‘rt fayldan iborat navbat, “Videoni siqish” andozasi, 60% sifat (≈ CRF 25), taxminiy hajmlar va jarayon"
+          },
+          {
+            "fayl": "docs/screenshots/2.png",
+            "izoh": "Qorong‘i mavzudagi “Birlashtirish” sahifasi: uchta video, natija fayli va “Tez (qayta kodlamasdan)” rejimi"
+          },
+          {
+            "fayl": "docs/screenshots/3.png",
+            "izoh": "“Media ma’lumoti” sahifasi: ffprobe orqali olingan konteyner, davomiylik, bitreyt va oqimlar ma’lumoti"
+          }
+        ]
+      },
+      {
+        "sarlavha": "Sinov va natijalar",
+        "matn": [
+          "Dastur pytest freymvorkida yozilgan avtomatik testlar bilan tekshiriladi. Tests papkasidagi to‘rtta faylda jami 26 ta test funksiyasi mavjud, ularning bir qismi parametrlangan.",
+          "- Andozalar testlari (18 ta funksiya): vaqtni turli ko‘rinishlarda o‘qish va davomiylikni formatlash, sifat va CRF o‘rtasidagi bog‘liqlikning monotonligi, proporsiyani saqlagan holda o‘lchamni hisoblash, chiqish yo‘li mavjud faylni qayta yozmasligi, Telegram uchun natija 2 GB dan oshmasligi, siqishda bitreyt manbadan katta bo‘lmasligi, Reels uchun xira fon filtri, kesish parametrlari va davomiylik, burish va zaxira kodlovchi, videosiz faylda xato, birlashtirish ro‘yxati va moslikni tekshirish, hajmni baholash, jarayon qatorlarini o‘qish, FFprobe ma’lumotidan burilishni aniqlash, shuningdek haqiqiy FFmpeg bilan bir nechta andoza bo‘yicha kodlash, kadrlarni olish va birlashtirish hamda jarayonni bekor qilish.",
+          "- Chuqur ssenariy testlari (4 ta funksiya): andozalarning noto‘g‘ri kiruvchi ma’lumotlardan himoyasi, birlashtirishda kiruvchi faylni qayta yozmaslik, bekor qilish va yaratib bo‘lmaydigan chiqish papkasi, shikastlangan sozlamalar fayli.",
+          "- Interfeys testlari (2 ta funksiya): navbatga fayl qo‘shib, ovozni ajratish va siqishni bajarish; noto‘g‘ri vaqt kiritilganda dasturning ishdan chiqmasligi.",
+          "- Tutun testlari (2 ta funksiya): asosiy oynaning yaratilishi va tarjimalarning uch tilda to‘liqligi.",
+          "Dastur o‘n uchta andozani, besh xil konteyner formatini (MP4, MKV, MOV, WEBM, AVI), uch xil audio formatni (MP3, AAC, WAV), GIF va JPG/PNG kadrlarni qo‘llab-quvvatlaydi. Interfeys o‘zbek, rus va ingliz tillarida, dastur Windows 10 (1809+) va Windows 11 uchun mo‘ljallangan.",
+          "Haqiqiy kodlash testlari test davomida FFmpeg yordamida yaratilgan qisqa namunaviy video ustida bajariladi va bir nechta andoza bilan olingan natija fayllari mavjudligi va o‘qilishi tekshiriladi. FFmpeg topilmagan muhitda bunday testlar o‘tkazib yuboriladi, buyruq tuzish va hisoblash modellari testlari esa tashqi dasturga bog‘liq emas.",
+          "Mazkur ishda kodlash tezligi va hajmni baholash aniqligi bo‘yicha miqdoriy o‘lchovlar o‘tkazilmagan; hajm baholash modeli taxminiy xarakterga ega bo‘lib, uning aniqligini turli video turlarida empirik tekshirish keyingi tadqiqotlar vazifasidir."
+        ]
+      },
+      {
+        "sarlavha": "Muhokama",
+        "matn": [
+          "Dasturning asosiy afzalligi – FFmpeg dasturining kuchli imkoniyatlarini vazifaga yo‘naltirilgan andozalar orqali taqdim etishi. Foydalanuvchi kodek va bitreyt haqida o‘ylamasdan “Telegram uchun” yoki “Instagram Reels” andozasini tanlaydi, dastur esa platforma cheklovlarini (hajm, o‘lcham, kadr chastotasi) avtomatik hisobga oladi. Hajmni oldindan baholash foydalanuvchiga natija talablarga mos kelishini kodlashdan oldin ko‘rish imkonini beradi.",
+          "Ikkinchi afzallik – kompyuter imkoniyatlaridan samarali foydalanish va ishonchlilik. Apparat kodlovchilarni sinov orqali aniqlash nazariy jihatdan mavjud, ammo amalda ishlamaydigan kodlovchini tanlash xavfini kamaytiradi, dasturiy kodlovchiga o‘tish esa natijaning har qanday kompyuterda olinishini ta’minlaydi.",
+          "Uchinchi afzallik – o‘rganish uchun shaffoflik. Kengaytirilgan rejimda buyruqni ko‘rish va tahrirlash dasturni FFmpeg dasturini o‘rganish vositasiga aylantiradi: foydalanuvchi andoza tanlab, tegishli buyruq tarkibini tahlil qilishi mumkin.",
+          "Hajmni baholash modelining tanlanishi ham asoslangan: piksel uchun bitlar soniga asoslangan model kodlovchidan mustaqil va hisoblash uchun arzon, shuning uchun u foydalanuvchi har bir sozlamani o‘zgartirganda darhol qayta hisoblanishi mumkin. Bitreyt bo‘yicha kodlash esa natija hajmini sifat bo‘yicha kodlashga (CRF) nisbatan oldindan aytib berish osonroq bo‘lgan rejim hisoblanadi; bu xususiyat platformaning hajm chegarasiga rioya qilish talab etiladigan andozalarda ayniqsa muhim.",
+          "Cheklovlar: andozalar to‘plami belgilangan va foydalanuvchi o‘z andozasini saqlay olmaydi; H.264 kodlashda bitreyt boshqaruvi qo‘llanadi, shuning uchun sifat turli sahnalarda o‘zgarishi mumkin; hajm baholash taxminiy; dasturda vaqt shkalasi bo‘yicha vizual montaj, subtitr qo‘shish yoki rang tuzatish kabi muharrir funksiyalari yo‘q. HEVC va AV1 kabi yangi kodeklar andozalarda ishlatilmaydi.",
+          "Rivojlantirish istiqbollari: foydalanuvchi andozalarini saqlash, HEVC va AV1 kodeklarini qo‘shish, ikki o‘tishli kodlash orqali hajm aniqligini oshirish, vaqt shkalasi bo‘yicha kesish uchun oldindan ko‘rish.",
+          "Umuman olganda, taklif etilgan yondashuvni “murakkab vositaga vazifaga yo‘naltirilgan kirish nuqtasi” sifatida tavsiflash mumkin: foydalanuvchi o‘z vazifasini tanlaydi, dastur esa uni texnik parametrlarga aylantiradi, kerak bo‘lganda esa bu parametrlarni ochiq ko‘rsatadi."
+        ]
+      },
+      {
+        "sarlavha": "Xulosa",
+        "matn": [
+          "Maqolada FFmpeg uchun andozalarga asoslangan grafik qobiq – “FFmpeg qobig‘i” dasturi taqdim etildi. Dastur o‘n uchta andoza, fayllar navbati, jarayonni kuzatish va bekor qilish, chiqish hajmini oldindan baholash, apparat kodlovchilarni avtomatik aniqlash, videolarni birlashtirish, media ma’lumotini ko‘rish va buyruqni tahrirlash imkoniyatlarini birlashtiradi. Sifatni CRF shkalasiga va piksel uchun bitlar modeliga bog‘lash, platforma cheklovlarini bitreyt hisobida inobatga olish va mavjud fayllar ustiga yozmaslik dasturning asosiy texnik yechimlari hisoblanadi. Dastur 26 ta avtomatik test funksiyasi bilan, shu jumladan haqiqiy FFmpeg bilan kodlash sinovlari orqali tekshiriladi.",
+          "Ishning amaliy ahamiyati – buyruq satri bilan ishlash tajribasi bo‘lmagan foydalanuvchiga professional darajadagi media vositasidan xavfsiz va tushunarli tarzda foydalanish imkonini berishda, ilmiy-uslubiy ahamiyati esa platforma cheklovlarini hisobga oluvchi andozalar va hajmni oldindan baholash yondashuvini taklif etishda ko‘rinadi.",
+          "Dastur o‘qituvchilar, talabalar, media va jurnalistika yo‘nalishi mutaxassislari hamda tashkilot xodimlari uchun video materiallarni platformalarga tayyorlash vositasi sifatida, shuningdek multimedia texnologiyalari fanlarida kodek, bitreyt va konteyner tushunchalarini amaliy o‘rgatish uchun qo‘llanishi mumkin."
+        ]
+      }
+    ],
+    "adabiyotlar": [
+      "O‘zbekiston Respublikasi Prezidentining 2020-yil 5-oktabrdagi PF-6079-son “Raqamli O‘zbekiston – 2030” strategiyasini tasdiqlash va uni samarali amalga oshirish chora-tadbirlari to‘g‘risida”gi Farmoni.",
+      "FFmpeg Documentation [Elektron resurs]. – URL: https://ffmpeg.org/documentation.html (murojaat sanasi: 27.11.2026).",
+      "FFmpeg Filters Documentation [Elektron resurs]. – URL: https://ffmpeg.org/ffmpeg-filters.html (murojaat sanasi: 27.11.2026).",
+      "ffprobe Documentation [Elektron resurs]. – URL: https://ffmpeg.org/ffprobe.html (murojaat sanasi: 27.11.2026).",
+      "ITU-T Recommendation H.264. Advanced video coding for generic audiovisual services [Elektron resurs]. – URL: https://www.itu.int/rec/T-REC-H.264 (murojaat sanasi: 27.11.2026).",
+      "Cisco Systems. OpenH264 [Elektron resurs]. – URL: https://www.openh264.org/ (murojaat sanasi: 27.11.2026).",
+      "Python Software Foundation. Python 3.12 Documentation [Elektron resurs]. – URL: https://docs.python.org/3.12/ (murojaat sanasi: 27.11.2026).",
+      "The Qt Company. Qt for Python (PySide6) Documentation [Elektron resurs]. – URL: https://doc.qt.io/qtforpython-6/ (murojaat sanasi: 27.11.2026).",
+      "PyInstaller Development Team. PyInstaller Manual [Elektron resurs]. – URL: https://pyinstaller.org/en/stable/ (murojaat sanasi: 27.11.2026).",
+      "Hakimov B. FFmpeg qobig‘i: dastur manba kodi va tavsifi [Elektron resurs]. – URL: https://github.com/eduhakimov/video-konvertor (murojaat sanasi: 27.11.2026)."
+    ]
+  },
+  "qollanma": {
+    "sarlavha": "Foydalanish qo‘llanmasi",
+    "bolimlar": [
+      {
+        "sarlavha": "Umumiy ma’lumot",
+        "matn": [
+          "“FFmpeg qobig‘i” – video va audio fayllar bilan ishlash uchun qulay oyna. Dastur FFmpeg yordamida videoni siqadi, uni Telegram, Instagram Reels, YouTube va WhatsApp uchun tayyorlaydi, formatini o‘zgartiradi, ovozini ajratadi, GIF yasaydi, kesadi, buradi, videolarni birlashtiradi va kadrlarni rasm sifatida saqlaydi. Har bir fayl uchun jarayon foizi va natijaning taxminiy hajmi ko‘rsatiladi.",
+          "Dastur o‘qituvchilar, talabalar, blogerlar, jurnalistlar va video materiallarni turli platformalarga tayyorlashi kerak bo‘lgan har qanday foydalanuvchi uchun mo‘ljallangan. Buyruq satrini bilish talab qilinmaydi. Barcha amallar kompyuterda bajariladi, internet kerak emas.",
+          "Qo‘llanmada tugma va bo‘lim nomlari dasturning o‘zbekcha interfeysidagi kabi keltirilgan.",
+          "Dasturda uchta sahifa bor: “Konvertatsiya” – fayllarni tanlangan andoza bo‘yicha qayta ishlash; “Birlashtirish” – bir nechta videoni bitta faylga qo‘shish; “Media ma’lumoti” – fayl haqidagi texnik ma’lumotlarni ko‘rish."
+        ]
+      },
+      {
+        "sarlavha": "Tizim talablari",
+        "matn": [
+          "- Operatsion tizim: Windows 10 (1809 va undan yuqori) yoki Windows 11, 64 bitli.",
+          "- Internet: talab qilinmaydi. FFmpeg va FFprobe dastur bilan birga keladi.",
+          "- Videokarta: shart emas. NVIDIA, AMD yoki Intel videokartasining apparat kodlovchisi mavjud bo‘lsa, dastur undan avtomatik foydalanadi.",
+          "- Diskda bo‘sh joy: yaratiladigan natija fayllari uchun (taxminiy hajm dasturda oldindan ko‘rsatiladi).",
+          "Qo‘llab-quvvatlanadigan kiruvchi fayllar: FFmpeg o‘qiy oladigan keng tarqalgan video va audio formatlari (masalan, MP4, MKV, MOV, AVI, WEBM, MP3, WAV). Chiqish formatlari: MP4, MKV, MOV, WEBM, AVI, MP3, M4A, WAV, GIF, JPG va PNG."
+        ]
+      },
+      {
+        "sarlavha": "O‘rnatish va ishga tushirish",
+        "matn": [
+          "1. Dasturning GitHub sahifasidagi (https://github.com/eduhakimov/video-konvertor) “Releases” bo‘limidan portativ ZIP arxivni yuklab oling.",
+          "2. Arxivni qulay papkaga to‘liq oching. Dastur fayli va ffmpeg papkasi birga turishi kerak.",
+          "3. Arxivdan chiqarilgan FFmpegQobigi.exe faylini ishga tushiring. O‘rnatish talab qilinmaydi.",
+          "4. Windows SmartScreen ogohlantirish chiqarsa, “Batafsil” havolasini, so‘ng “Baribir ishga tushirish” tugmasini bosing.",
+          "Birinchi kodlashda dastur kompyuterdagi apparat kodlovchilarni tekshiradi; bu bir necha soniya vaqt olishi mumkin. Natija eslab qolinadi va keyingi kodlashlar tezroq boshlanadi."
+        ]
+      },
+      {
+        "sarlavha": "Dastur oynasi bilan tanishish",
+        "matn": [
+          "Oynaning yuqorisida menyu satri (“Fayl”, “Sozlamalar”, “Yordam”), chap tomonda uchta sahifa nomi joylashgan: “Konvertatsiya”, “Birlashtirish” va “Media ma’lumoti”.",
+          "“Konvertatsiya” sahifasida yuqorida fayllarni tashlash maydoni, uning ostida navbat jadvali, o‘ng tomonda “Andoza va sozlamalar” kartochkasi joylashgan. Jadval ostida “Fayl qo‘shish”, “Olib tashlash”, “Tozalash” va “Buyruq (kengaytirilgan)” tugmalari, eng pastda umumiy jarayon chizig‘i, “Papkani ochish”, “Bekor qilish” va “Boshlash” tugmalari bor. Kartochka pastida “Jami taxminiy hajm” ko‘rsatiladi.",
+          "Navbat jadvalida har bir fayl uchun nomi, davomiyligi va o‘lchami, hajmi va natijaning taxminiy hajmi (“Hajmi > Taxminan”), jarayon va holat ko‘rinadi.",
+          "“Birlashtirish” sahifasida fayllar ro‘yxati, o‘ng tomonda “Yuqoriga”, “Pastga”, “Olib tashlash” va “Tozalash” tugmalari, pastda “Natija fayli” maydoni, “Tez (qayta kodlamasdan)” belgisi va “Birlashtirish” tugmasi joylashgan. “Media ma’lumoti” sahifasida “Xususiyat” va “Qiymat” ustunli jadval hamda “Hammasini nusxalash” va “Navbatga qo‘shish” tugmalari bor.",
+          "Navbat jadvali va sozlamalar kartochkasi orasidagi chegarani sudrab, ularning kengligini o‘zgartirish mumkin. Pastki holat satrida dastur holati haqida qisqa xabarlar chiqadi."
+        ],
+        "rasmlar": [
+          {
+            "fayl": "docs/screenshots/1.png",
+            "izoh": "“Konvertatsiya” sahifasi: navbat jadvali, andoza sozlamalari va jarayon"
+          }
+        ]
+      },
+      {
+        "sarlavha": "Asosiy amallar",
+        "matn": [
+          "Quyida dasturning har bir sahifasi va andozasi bilan ishlash tartibi tavsiflangan. Odatiy ish tartibi: fayllarni navbatga qo‘shish – andozani tanlash – sozlamalarni tekshirish – “Boshlash” tugmasini bosish – natijani ko‘rish.",
+          "**Fayllarni konvertatsiya qilish.**",
+          "1. “Konvertatsiya” sahifasini oching.",
+          "2. Video yoki audio fayllarni tashlash maydoniga sudrab tashlang yoki “Fayl qo‘shish” tugmasini bosing. Dastur har bir faylni o‘qib, davomiylik, o‘lcham va hajmni jadvalda ko‘rsatadi.",
+          "3. “Andoza” ro‘yxatidan kerakli vazifani tanlang. Ro‘yxat ostida andoza tavsifi chiqadi.",
+          "4. Andozaga xos parametrlarni sozlang (masalan, “Sifat” slayderi yoki “Format”). “Taxminan” ustunida natija hajmi darhol yangilanadi.",
+          "5. Kerak bo‘lsa, “Saqlash papkasi” ni tanlang (bo‘sh bo‘lsa, natija manba fayl papkasiga yoziladi).",
+          "6. “Boshlash” tugmasini bosing. Fayllar navbat bilan qayta ishlanadi. To‘xtatish uchun “Bekor qilish” tugmasini bosing.",
+          "7. Tugagach, “Papkani ochish” tugmasi orqali natijalarni ko‘ring.",
+          "**Andozalar va ularning sozlamalari.**",
+          "- “Videoni siqish” – “Sifat” slayderi bilan hajm va sifat muvozanatini tanlang; kerak bo‘lsa “Balandlik” ni kamaytiring.",
+          "- “Telegram uchun” – 1080p gacha, natija 2 GB dan oshmaydi.",
+          "- “Instagram Reels (1080×1920)” – vertikal video; gorizontal video uchun “Joylash” usulini tanlang: “Xira fon bilan”, “Qora hoshiya” yoki “Kesib to‘ldirish”.",
+          "- “YouTube 1080p” – 1920×1080 o‘lcham, sifatli ovoz.",
+          "- “WhatsApp uchun” – 720p, 30 kadr/s, kichik hajm.",
+          "- “Formatni o‘zgartirish” – MP4, MKV, MOV, WEBM yoki AVI; “Tez (qayta kodlamasdan)” belgisi yoqilsa, video qayta kodlanmaydi va jarayon juda tez bajariladi.",
+          "- “Ovozni ajratib olish” – MP3, AAC (M4A) yoki WAV; MP3 va AAC uchun “Bitreyt” ni tanlang.",
+          "- “GIF yasash” – “Kadr/s” va “Kenglik (px)” ni tanlang; qisqa bo‘lak uchun “Boshlanish / Tugash” vaqtini kiriting.",
+          "- “Kesib olish” – “Boshlanish” va “Tugash” vaqtini kiriting, masalan “1:30” yoki “90”.",
+          "- “O‘lchamni o‘zgartirish” – kerakli “Balandlik” ni tanlang, proporsiya saqlanadi.",
+          "- “Burish / aks ettirish” – “Amal” ro‘yxatidan burish yoki aks ettirish turini tanlang.",
+          "- “Ovozni olib tashlash” – video qayta kodlanmaydi.",
+          "- “Kadrlarni rasmga olish” – “Har N soniyada” va “Rasm formati” (JPG yoki PNG) ni tanlang; rasmlar alohida papkaga saqlanadi.",
+          "Vaqt maydonlariga “90”, “1:30” yoki “00:01:30.5” ko‘rinishida yozish mumkin. Bo‘sh qoldirilsa, butun fayl qayta ishlanadi.",
+          "**Videolarni birlashtirish.**",
+          "1. “Birlashtirish” sahifasini oching va kamida ikkita faylni qo‘shing.",
+          "2. Tartibni “Yuqoriga” va “Pastga” tugmalari bilan o‘zgartiring.",
+          "3. “Natija fayli” maydonida yangi fayl nomini tekshiring.",
+          "4. Dastur fayllar bir xil formatda ekanini aniqlasa, “Tez (qayta kodlamasdan)” rejimi tavsiya etiladi; aks holda fayllar qayta kodlanadi va bu ko‘proq vaqt oladi.",
+          "5. “Birlashtirish” tugmasini bosing.",
+          "**Media ma’lumotini ko‘rish.** “Media ma’lumoti” sahifasiga bitta faylni tashlang. Jadvalda konteyner, davomiylik, hajm, bitreyt, video va audio parametrlari chiqadi. “Hammasini nusxalash” tugmasi ma’lumotni nusxalaydi, “Navbatga qo‘shish” esa faylni konvertatsiya navbatiga qo‘shadi.",
+          "**Buyruqni ko‘rish va tahrirlash (tajribali foydalanuvchilar uchun).** Navbatdan faylni tanlab, “Buyruq (kengaytirilgan)” tugmasini bosing. Oynada shu fayl uchun tuzilgan buyruq chiqadi. Uni tahrirlab, “Shu faylga qo‘llash” tugmasini bosing yoki “Asl holiga qaytarish” orqali dastlabki buyruqqa qayting.",
+          "**Andoza tanlash bo‘yicha maslahatlar.**",
+          "- Videoni messenjer orqali yuborish kerak bo‘lsa, “Telegram uchun” yoki “WhatsApp uchun” andozasini tanlang: ular platforma cheklovlarini o‘zi hisobga oladi.",
+          "- Videoni faqat boshqa formatga o‘tkazish kerak bo‘lsa, avval “Formatni o‘zgartirish” andozasida “Tez (qayta kodlamasdan)” rejimini sinab ko‘ring: bu eng tez usul va sifat o‘zgarmaydi.",
+          "- Hajmni kamaytirish kerak bo‘lsa, “Videoni siqish” andozasida avval sifatni 60% atrofida qoldirib, natijani tekshiring; hajm hali katta bo‘lsa, sifatni pasaytiring yoki “Balandlik” ni kamaytiring.",
+          "- Ma’ruza yoki intervyudan faqat ovoz kerak bo‘lsa, “Ovozni ajratib olish” andozasidan foydalaning: audio fayl videodan ancha kichik bo‘ladi.",
+          "**Navbat bilan ishlash.** Jadvaldagi faylni tanlab, “Olib tashlash” tugmasi bilan navbatdan chiqarish, “Tozalash” bilan butun navbatni bo‘shatish mumkin. Bir nechta fayl qo‘shilgan bo‘lsa, ularning barchasiga bir xil andoza qo‘llanadi. Holat ustunida har bir faylning natijasi ko‘rsatiladi; navbat tugagach, nechta fayl muvaffaqiyatli va nechtasi xato bilan tugagani haqida xabar chiqadi.",
+          "**Natijani tekshirish.** Kodlash tugagach, natija faylini “Media ma’lumoti” sahifasiga tashlab, uning o‘lchami, davomiyligi va hajmi kutilganga mos kelishini tekshiring. Videoni odatiy pleyerda ko‘rib, tasvir va ovoz sifatini baholang."
+        ],
+        "rasmlar": [
+          {
+            "fayl": "docs/screenshots/2.png",
+            "izoh": "“Birlashtirish” sahifasi: fayllar ro‘yxati, tartib tugmalari va natija fayli"
+          },
+          {
+            "fayl": "docs/screenshots/3.png",
+            "izoh": "“Media ma’lumoti” sahifasi: faylning texnik ma’lumotlari jadvali"
+          }
+        ]
+      },
+      {
+        "sarlavha": "Sozlamalar",
+        "matn": [
+          "- **Kodlovchi.** “Andoza va sozlamalar” kartochkasidagi “Kodlovchi” ro‘yxatida “Avto (eng tezi)” tanlansa, dastur kompyuterdagi eng tez ishlaydigan kodlovchini o‘zi tanlaydi. Ro‘yxatda kompyuteringizda aniqlangan kodlovchilar ham ko‘rsatiladi.",
+          "- **Saqlash papkasi.** Natijalar uchun umumiy papkani tanlash mumkin; maydon bo‘sh bo‘lsa (“Manba fayl papkasi”), natija har bir manba fayl turgan papkaga yoziladi.",
+          "- **Til.** “Sozlamalar → Til” menyusida o‘zbek, rus yoki ingliz tilini tanlang; dastur qayta ishga tushadi.",
+          "- **Mavzu.** “Sozlamalar → Mavzu” menyusida “Tizim bo‘yicha”, “Yorug‘” yoki “Qorong‘i” ni tanlang.",
+          "Tanlangan andoza va uning sozlamalari keyingi ishga tushirishda eslab qolinadi.",
+          "Sozlamalar fayli shikastlangan bo‘lsa, dastur standart qiymatlar bilan ishga tushadi va ishlashda davom etadi."
+        ]
+      },
+      {
+        "sarlavha": "Ma’lumotlarni saqlash va xavfsizlik",
+        "matn": [
+          "- Manba fayllar hech qachon o‘zgartirilmaydi. Natija har doim yangi faylga yoziladi: nomiga andozani bildiruvchi qo‘shimcha (masalan, “compressed”, “telegram”, “audio”) qo‘shiladi. Bunday fayl mavjud bo‘lsa, nomga “(2)”, “(3)” kabi raqam qo‘shiladi.",
+          "- Birlashtirishda natija fayli kiruvchi fayllardan biri bilan bir xil bo‘lsa, dastur “Natija fayli birlashtirilayotgan fayllardan biri bilan bir xil. Boshqa nom tanlang.” deb ogohlantiradi.",
+          "- Dastur internetga ulanmaydi, fayllaringiz hech qayerga yuborilmaydi.",
+          "- Sozlamalar va xatolar jurnali (log.txt) %APPDATA%\\BahtiyorSoft\\video-konvertor papkasida saqlanadi.",
+          "- Umumiy foydalanishdagi kompyuterda ishlaganda natija fayllaringizni ish yakunida o‘z saqlash vositangizga ko‘chiring va keraksizlarini o‘chiring."
+        ]
+      },
+      {
+        "sarlavha": "Ko‘p uchraydigan savollar va muammolar",
+        "matn": [
+          "**“ffmpeg topilmadi” xabari chiqdi.** Dastur papkasidagi ffmpeg fayllari yo‘q. ZIP arxivni qayta to‘liq oching va dasturni arxivdan chiqarilgan papkadan ishga tushiring.",
+          "**Haqiqiy hajm taxminiy hajmdan farq qiladi.** Taxminiy hajm hisob-kitob asosida chiqariladi; video mazmuniga qarab natija biroz farq qilishi mumkin.",
+          "**“Vaqt noto‘g‘ri yozilgan” xabari.** Vaqtni “90”, “1:30” yoki “00:01:30.5” ko‘rinishida yozing. Tugash vaqti boshlanishdan katta bo‘lishi kerak.",
+          "**“Faylda video yo‘q” yoki “Faylda ovoz yo‘q”.** Tanlangan andoza uchun faylda kerakli oqim mavjud emas. Masalan, audio fayldan GIF yasab bo‘lmaydi.",
+          "**Birlashtirish sekin.** Fayllar formati har xil bo‘lsa, ular qayta kodlanadi. Tez birlashtirish uchun bir xil formatdagi fayllardan foydalaning yoki avval ularni bir xil andoza bilan konvertatsiya qiling.",
+          "**Kodlash sekin.** Videokartangizning apparat kodlovchisi bo‘lmasa, dasturiy kodlovchi ishlatiladi va bu ko‘proq vaqt oladi. Hajmi kichikroq andozani tanlash yoki balandlikni kamaytirish jarayonni tezlashtiradi.",
+          "**Qo‘llanmani qayerdan ochaman?** “Yordam → Qo‘llanma” menyusi yoki F1 tugmasi orqali.",
+          "**Telefonda yozilgan vertikal video yonboshlab ko‘rinyapti.** Dastur videodagi burilish ma’lumotini hisobga oladi. Agar baribir noto‘g‘ri ko‘rinsa, “Burish / aks ettirish” andozasidan foydalaning.",
+          "**Kadrlar qayerga saqlandi?** “Kadrlarni rasmga olish” andozasida rasmlar saqlash papkasida yaratiladigan alohida papkaga yoziladi. “Papkani ochish” tugmasi orqali uni ko‘rish mumkin.",
+          "**Kesib olingan bo‘lak boshi biroz farq qiladi.** “Kesib olish” andozasida “Tez” rejim ishlatilsa, video qayta kodlanmaydi va kesish nuqtasi eng yaqin tayanch kadrga to‘g‘ri kelishi mumkin. Aniq kesish uchun “Tez” rejimni o‘chiring."
+        ]
+      }
+    ]
+  },
+  "uslubiy": {
+    "sarlavha": "Uslubiy ko‘rsatma",
+    "bolimlar": [
+      {
+        "sarlavha": "Uslubiy ko‘rsatmaning maqsadi va vazifalari",
+        "matn": [
+          "Mazkur uslubiy ko‘rsatma “FFmpeg qobig‘i” dasturidan oliy ta’lim muassasalari, kollej va texnikumlarda o‘quv mashg‘ulotlari o‘tkazishda hamda tashkilotlarda video materiallar bilan ishlashda foydalanish tartibini belgilaydi.",
+          "Maqsad – tinglovchilarda raqamli video va audioning asosiy parametrlari (konteyner, kodek, o‘lcham, kadr chastotasi, bitreyt) haqida tushuncha hosil qilish hamda materiallarni turli platformalar talablariga mos tayyorlash ko‘nikmalarini shakllantirish.",
+          "Vazifalar:",
+          "- konteyner va kodek tushunchalarining farqini tushuntirish;",
+          "- bitreyt, o‘lcham va davomiylik bilan fayl hajmi o‘rtasidagi bog‘liqlikni ko‘rsatish;",
+          "- sifat va hajm o‘rtasidagi muvozanatni tanlashni o‘rgatish;",
+          "- platformalar (messenjerlar, ijtimoiy tarmoqlar, video xostinglar) talablariga mos fayl tayyorlash ko‘nikmasini shakllantirish;",
+          "- qayta kodlash va qayta kodlamasdan ishlov berish farqini tushuntirish;",
+          "- FFmpeg buyrug‘ining tuzilishi bilan tanishtirish;",
+          "- mualliflik huquqi va shaxsiy ma’lumotlarga hurmat madaniyatini rivojlantirish.",
+          "Mashg‘ulot uchun Windows 10 yoki 11 o‘rnatilgan kompyuterlar va o‘qituvchi tayyorlagan 2–3 ta qisqa (1–2 daqiqalik) namunaviy video kerak. Internet talab qilinmaydi.",
+          "Mashg‘ulot yakunida tinglovchi bilishi kerak: konteyner, kodek, bitreyt, o‘lcham va kadr chastotasi tushunchalari, fayl hajmini taxminiy hisoblash usuli, qayta kodlash va nusxalash farqi, asosiy platformalar talablari. Tinglovchi bajara olishi kerak: media fayl parametrlarini aniqlash, videoni kerakli hajm va sifatda siqish, uni platformaga moslab tayyorlash, ovozni ajratish, GIF yasash, videolarni birlashtirish va natijani tekshirish."
+        ]
+      },
+      {
+        "sarlavha": "Qo‘llash sohasi va maqsadli auditoriya",
+        "matn": [
+          "Dasturdan quyidagi fanlar va kurslarda foydalanish tavsiya etiladi: “Multimedia texnologiyalari”, “Kompyuter grafikasi va video montaj”, “Raqamli media”, “Jurnalistika va media texnologiyalari”, “Informatika va axborot texnologiyalari”, “Masofaviy ta’lim texnologiyalari”, “Ma’lumotlarni siqish usullari”.",
+          "Maqsadli auditoriya:",
+          "- multimedia, dizayn, jurnalistika va axborot texnologiyalari yo‘nalishlari talabalari va o‘quvchilari;",
+          "- video ma’ruza va o‘quv materiallari tayyorlaydigan professor-o‘qituvchilar;",
+          "- tashkilotlarning matbuot xizmati va ijtimoiy tarmoqlar bilan ishlovchi xodimlari;",
+          "- buyruq satri vositalarini o‘rganayotgan informatika talabalari (kengaytirilgan rejim orqali).",
+          "Kasbiy vazifalardan misollar: dars yozuvini masofaviy ta’lim platformasiga yuklash uchun siqish, tadbir videosini Telegram yoki WhatsApp orqali yuborish uchun tayyorlash, gorizontal videodan Instagram Reels uchun vertikal variant yaratish, intervyudan ovozni MP3 ko‘rinishida ajratish, taqdimot uchun qisqa GIF tayyorlash, videodan illyustratsiya uchun kadrlar olish.",
+          "Informatika yo‘nalishidagi tinglovchilar uchun dastur qo‘shimcha o‘quv qiymatiga ega: kengaytirilgan rejimda har bir andoza qanday buyruqqa aylanishini ko‘rish mumkin. Bu buyruq satri vositalari, parametrlar sintaksisi va filtrlar zanjiri kabi tushunchalarni grafik interfeys bilan bog‘lab o‘rganishga imkon beradi. Shuningdek, sifatning CRF shkalasiga o‘tkazilishi va hajmni baholash formulasi ma’lumotlarni siqish nazariyasi mavzulari uchun amaliy misol bo‘la oladi.",
+          "Masofaviy ta’lim sharoitida dastur o‘qituvchilarga katta hajmli dars yozuvlarini platformaga yuklash uchun tez tayyorlash, talabalarga esa sekin internet orqali ham yuklab olinadigan kichik hajmli variantlarni yaratish imkonini beradi. Bu raqamli o‘quv materiallaridan foydalanish imkoniyatini kengaytiradi."
+        ]
+      },
+      {
+        "sarlavha": "O‘quv mashg‘ulotida foydalanish tartibi",
+        "matn": [
+          "80 daqiqalik amaliy mashg‘ulot rejasi:",
+          "1. **Tashkiliy qism (5 daqiqa).** Davomat, mavzu va maqsadni e’lon qilish, kompyuterlar va namunaviy videolar tayyorligini tekshirish.",
+          "2. **Nazariy qism (20 daqiqa).** Raqamli video tuzilishi: konteyner (MP4, MKV, WEBM) va kodek (H.264, VP9, AAC) farqi. Bitreyt va fayl hajmi: hajm ≈ (video bitreyti + audio bitreyti) × davomiylik. O‘lcham va kadr chastotasining ta’siri. Qayta kodlash va oqimni nusxalash. Apparat va dasturiy kodlovchilar. Platforma talablari. Dastur oynasi va andozalar bilan tanishtirish. O‘qituvchi “Media ma’lumoti” sahifasida namunaviy video parametrlarini ko‘rsatib, tushunchalarni aniq misolda izohlaydi.",
+          "3. **Amaliy qism (45 daqiqa).** Tinglovchilar “Amaliy topshiriqlar” bo‘limidagi 1–6-topshiriqlarni bajaradi: media ma’lumotini tahlil qiladi, videoni turli sifatda siqadi, platformalar uchun tayyorlaydi, ovozni ajratadi, GIF yasaydi va videolarni birlashtiradi.",
+          "4. **Yakuniy qism (10 daqiqa).** Natijalarni muhokama qilish: taxminiy va haqiqiy hajmni solishtirish, sifatdagi farqlarni baholash. Nazorat savollari, baholash, mustaqil ish topshirig‘i.",
+          "Kodlash vaqt talab qilishini hisobga olib, amaliy qismda qisqa videolardan foydalanish va jarayon davom etayotganda tinglovchilarga “Buyruq (kengaytirilgan)” oynasida buyruq tarkibini tahlil qilish topshirig‘ini berish tavsiya etiladi.",
+          "Nazariy qismda o‘qituvchi hajm formulasini doskada misol bilan hisoblab ko‘rsatishi tavsiya etiladi: masalan, 2000 kbit/s video va 128 kbit/s audio bitreytli 60 soniyalik video taxminan (2000 + 128) × 60 / 8 ≈ 16 MB hajmga ega bo‘ladi. So‘ngra shu natija dasturdagi “Taxminan” ustuni bilan solishtiriladi. Bu usul nazariy formulani amaliy natija bilan bog‘laydi.",
+          "Amaliy qismni juftlikda tashkil etish mumkin: bir tinglovchi kodlashni bajaradi, ikkinchisi “Media ma’lumoti” orqali natija parametrlarini tekshiradi va jadvalga yozadi.",
+          "Mashg‘ulot natijasi sifatida har bir tinglovchi siqilgan, platformaga moslangan va birlashtirilgan video fayllar hamda media parametrlari va hajmlar yozilgan jadvalni topshiradi."
+        ],
+        "rasmlar": [
+          {
+            "fayl": "docs/screenshots/3.png",
+            "izoh": "Nazariy qismda tushunchalarni izohlash uchun ishlatiladigan “Media ma’lumoti” sahifasi"
+          }
+        ]
+      },
+      {
+        "sarlavha": "Amaliy topshiriqlar",
+        "matn": [
+          "Topshiriqlar murakkablik darajasi ortib borish tartibida joylashtirilgan. Har bir topshiriqdan keyin tinglovchi natija faylini “Media ma’lumoti” sahifasida ochib, uning parametrlarini tekshiradi. Namunaviy videolar sifatida mualliflik huquqi cheklovlari bo‘lmagan, o‘qituvchi tayyorlagan materiallardan foydalaniladi.",
+          "1. **Media ma’lumotini tahlil qilish.** Namunaviy videoni “Media ma’lumoti” sahifasida oching va uning konteyneri, kodeklari, o‘lchami, kadr chastotasi va bitreytini daftarga yozing. Kutilgan natija: to‘ldirilgan parametrlar jadvali va har bir parametr nimani bildirishining izohi.",
+          "2. **Sifat va hajm.** Bitta videoni “Videoni siqish” andozasida 30%, 60% va 90% sifat bilan siqing. Kutilgan natija: uchta fayl; tinglovchi taxminiy va haqiqiy hajmlarni solishtiradi va tasvir sifatidagi farqni tavsiflaydi.",
+          "3. **Platformalar uchun tayyorlash.** Shu videoni “Telegram uchun” va “WhatsApp uchun” andozalarida tayyorlang. Kutilgan natija: ikki fayl; tinglovchi ularning o‘lchami va hajmidagi farqni “Media ma’lumoti” orqali tekshirib, sababini izohlaydi.",
+          "4. **Vertikal video.** Gorizontal videodan “Instagram Reels (1080×1920)” andozasi bilan uchta variant yarating: “Xira fon bilan”, “Qora hoshiya”, “Kesib to‘ldirish”. Kutilgan natija: uchta vertikal video va ularning afzalliklari haqida qisqa xulosa.",
+          "5. **Ovoz va GIF.** Videodan ovozni MP3 formatida ajrating, so‘ng 5 soniyalik bo‘lakdan GIF yasang. Kutilgan natija: MP3 fayl va GIF fayl; manba video o‘zgarmagan.",
+          "6. **Birlashtirish.** Bir xil formatdagi ikki videoni “Tez (qayta kodlamasdan)” rejimida birlashtiring, so‘ng formati har xil bo‘lgan ikki videoni birlashtiring. Kutilgan natija: ikki birlashtirilgan fayl; tinglovchi ikkinchi holatda nima uchun qayta kodlash zarurligini tushuntiradi.",
+          "7. **Kesish va burish.** Videodan 0:10 dan 0:25 gacha bo‘lgan qismni kesib oling, so‘ng uni 90° soat yo‘nalishida buring. Kutilgan natija: 15 soniyalik burilgan video.",
+          "8. **Buyruq tahlili.** “Buyruq (kengaytirilgan)” orqali “Videoni siqish” andozasi tuzgan buyruqni ko‘chirib oling va undagi har bir parametrning vazifasini FFmpeg hujjatlari yordamida izohlang. Kutilgan natija: izohlangan buyruq matni.",
+          "Vaqt yetmagan hollarda 7–8-topshiriqlar mustaqil ish sifatida uyga beriladi va keyingi mashg‘ulotda tekshiriladi."
+        ]
+      },
+      {
+        "sarlavha": "Baholash mezonlari",
+        "matn": [
+          "Baholash amaliy ish natijalari, ularning tahlili va nazorat savollariga javoblar asosida amalga oshiriladi.",
+          "Amaliy ish 100 ballik tizimda baholanadi:",
+          "- media parametrlarini to‘g‘ri aniqlash va izohlash – 15 ball;",
+          "- siqish va sifat bo‘yicha tajriba, natijalarni solishtirish – 20 ball;",
+          "- platformalar uchun fayllarni to‘g‘ri tayyorlash – 20 ball;",
+          "- ovozni ajratish, GIF va birlashtirish topshiriqlari – 15 ball;",
+          "- natijalarning tahlili va xulosalar (hajm, sifat, vaqt) – 15 ball;",
+          "- nazorat savollariga javoblar – 15 ball.",
+          "Baho: 86–100 ball – “a’lo”, 71–85 – “yaxshi”, 55–70 – “qoniqarli”, 55 dan kam – “qoniqarsiz”. 7–8-topshiriqlar uchun qo‘shimcha rag‘batlantiruvchi ballar berilishi mumkin.",
+          "Baholashda natija fayllarining o‘zi bilan birga tinglovchining tanlovlarini asoslay olishi (nima uchun aynan shu andoza va sifat tanlangani) muhim hisoblanadi. Ballar jurnalda qayd etiladi."
+        ]
+      },
+      {
+        "sarlavha": "Nazorat savollari",
+        "matn": [
+          "Savollar og‘zaki so‘rov yoki qisqa yozma nazorat uchun mo‘ljallangan. Har bir to‘liq va asoslangan javob uchun 1,5 ball beriladi.",
+          "1. Konteyner va kodek o‘rtasidagi farq nimada? Misollar keltiring.",
+          "2. Video fayl hajmi qaysi parametrlarga bog‘liq?",
+          "3. Bitreyt nima va u sifatga qanday ta’sir qiladi?",
+          "4. Qayta kodlash va oqimni nusxalash (“Tez” rejim) farqi nimada?",
+          "5. Nima uchun ba’zi videolarni tez birlashtirib bo‘lmaydi?",
+          "6. Apparat kodlovchining afzalligi nimada?",
+          "7. Instagram Reels uchun gorizontal videoni joylashning qanday usullari bor?",
+          "8. Dastur Telegram uchun tayyorlashda hajmni qanday cheklaydi?",
+          "9. Taxminiy hajm haqiqiy hajmdan nima uchun farq qilishi mumkin?",
+          "10. Boshqa muallif videosini qayta ishlash va tarqatishda qanday qoidalarga rioya qilish kerak?",
+          "Savollarga javob berishda tinglovchi o‘z amaliy natijalaridan misollar keltirishi tavsiya etiladi."
+        ]
+      },
+      {
+        "sarlavha": "Mustaqil ish uchun tavsiyalar",
+        "matn": [
+          "- O‘zingiz telefonda yozgan 1–2 daqiqalik videoni uchta platforma (Telegram, WhatsApp, YouTube) uchun tayyorlang va natijalar parametrlarini jadvalga yozing.",
+          "- Turli turdagi videolar (statik ma’ruza, harakatli sport sahnasi) uchun bir xil sifat sozlamasida siqish natijalarini solishtiring va harakat darajasi hajm va sifatga qanday ta’sir qilishi haqida xulosa yozing.",
+          "- Ovozni MP3, AAC va WAV formatlarida ajratib, hajmlarni solishtiring va siqilgan hamda siqilmagan audio formatlari farqini tushuntiring.",
+          "- FFmpeg rasmiy hujjatlaridan foydalanib, dasturdagi biror andoza buyrug‘ini mustaqil tahlil qiling va 1 sahifali izoh tayyorlang.",
+          "- Mustaqil ish natijalarini keyingi mashg‘ulotda qisqa chiqish shaklida taqdim eting.",
+          "- Dasturning “Kesib olish” andozasini “Tez” rejimda va qayta kodlash bilan bajarib, natijalarni davomiylik va kesish aniqligi bo‘yicha solishtiring; farqning sababini tayanch kadr tushunchasi orqali tushuntiring.",
+          "- “Kadrlarni rasmga olish” andozasi yordamida o‘quv videosidan har 10 soniyada kadr olib, ulardan mavzu bo‘yicha qisqa vizual konspekt (taqdimot yoki hujjat) tayyorlang.",
+          "- Bir xil videoni “Formatni o‘zgartirish” andozasida MP4 va WEBM formatlariga o‘tkazib, kodlash vaqti va hajmini solishtiring hamda natijalarni qisqa jadvalda ifodalang."
+        ]
+      },
+      {
+        "sarlavha": "Xavfsizlik va axborot madaniyati qoidalari",
+        "matn": [
+          "- Boshqa mualliflarning videolarini ruxsatsiz qayta ishlamang va tarqatmang; mualliflik huquqini hurmat qiling.",
+          "- Videoda boshqa shaxslar tasvirlangan bo‘lsa, ularning roziligisiz videoni ijtimoiy tarmoqlarga joylamang.",
+          "- Shaxsiy va xizmat videolarini onlayn konvertorlarga yuklamang; oflayn vositalardan foydalaning.",
+          "- Kengaytirilgan rejimda buyruqni tahrirlaganda chiqish fayli nomiga e’tibor bering: buyruqdagi o‘zgarishlar natijaga bevosita ta’sir qiladi.",
+          "- Diskda bo‘sh joy yetarli ekanini tekshiring: katta videolarni kodlashda natija fayllari ko‘p joy egallaydi.",
+          "- Kompyuter sinfida ishlash va texnika xavfsizligi qoidalariga rioya qiling; mashg‘ulot yakunida o‘quv kompyuteridagi shaxsiy videolaringizni o‘chiring.",
+          "- Dasturni faqat rasmiy GitHub sahifasidan yuklab oling.",
+          "- Natija fayllarini nomlashda tushunarli nomlardan foydalaning va asl videolarning zaxira nusxasini saqlang.",
+          "- Kodlash jarayonida kompyuter qizib ketishi va ventilyator kuchliroq ishlashi tabiiy holat; noutbukda uzoq kodlashni elektr tarmog‘iga ulangan holda bajaring."
+        ]
+      }
+    ]
+  }
+}
