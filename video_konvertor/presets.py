@@ -221,10 +221,12 @@ def build_commands(job: Job, src: str, info: MediaInfo, out: str, ffmpeg: str = 
                    fallback_encoder: str = "libopenh264") -> List[List[str]]:
     """Bajariladigan buyruqlar ro'yxati: birinchisi asosiy, qolganlari xato bo'lsa zaxira variantlar."""
     p = job.preset
-    if p in VIDEO_PRESETS | {"gif", "frames"} and not info.has_video:
+    if p in VIDEO_PRESETS | {"gif", "frames", "noaudio"} and not info.has_video:
         raise ValueError("no_video")
     if p == "audio" and not info.has_audio:
         raise ValueError("no_audio")
+    if job.start and info.duration and job.start >= info.duration:
+        raise ValueError("start_beyond")
     pre, post = _time_args(job, info)
     head = [ffmpeg, "-hide_banner", "-y", "-nostdin", "-progress", "pipe:1", "-nostats", "-loglevel", "error"]
     inp = pre + ["-i", src]

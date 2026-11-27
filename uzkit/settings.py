@@ -18,6 +18,8 @@ class Settings:
         try:
             if self.path.exists():
                 self._data = json.loads(self.path.read_text(encoding="utf-8"))
+                if not isinstance(self._data, dict):
+                    raise ValueError("settings root is not an object")
         except Exception:
             # Buzilgan faylni zaxiraga olib, toza boshlaymiz
             try:

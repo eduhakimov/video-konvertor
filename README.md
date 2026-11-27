@@ -4,8 +4,8 @@
 <p align="center"><b>FFmpeg Shell</b> · Оболочка FFmpeg</p>
 
 <p align="center">
-  <a href="https://github.com/eduhakimov/video-konvertor/releases/latest/download/FFmpegQobigi-1.0.0-portable.zip"><img src="https://img.shields.io/badge/Yuklab_olish-FFmpegQobigi--1.0.0--portable.zip-2ea44f?style=for-the-badge&logo=windows" alt="download"></a><br>
-  <img src="https://img.shields.io/badge/version-1.0.0-blue" alt="version">
+  <a href="https://github.com/eduhakimov/video-konvertor/releases/latest/download/FFmpegQobigi-1.0.1-portable.zip"><img src="https://img.shields.io/badge/Yuklab_olish-FFmpegQobigi--1.0.1--portable.zip-2ea44f?style=for-the-badge&logo=windows" alt="download"></a><br>
+  <img src="https://img.shields.io/badge/version-1.0.1-blue" alt="version">
   <img src="https://img.shields.io/badge/Windows-10%20%7C%2011-0078D6?logo=windows" alt="windows">
   <img src="https://img.shields.io/badge/til-UZ%20%7C%20RU%20%7C%20EN-orange" alt="languages">
   <img src="https://img.shields.io/badge/license-All%20rights%20reserved-red" alt="license">
@@ -38,7 +38,7 @@ FFmpeg uchun qulay oyna: videoni siqish, Telegram, Instagram Reels, YouTube va W
 
 ## O'rnatish
 
-1. [**FFmpegQobigi-1.0.0-portable.zip**](https://github.com/eduhakimov/video-konvertor/releases/latest/download/FFmpegQobigi-1.0.0-portable.zip) faylini yuklab oling.
+1. [**FFmpegQobigi-1.0.1-portable.zip**](https://github.com/eduhakimov/video-konvertor/releases/latest/download/FFmpegQobigi-1.0.1-portable.zip) faylini yuklab oling.
 2. Arxivni ochib, ichidagi FFmpegQobigi.exe ni ishga tushiring.
 3. Windows SmartScreen ogohlantirsa: **Batafsil → Baribir ishga tushirish**.
 

@@ -107,7 +107,8 @@ class QueueThread(QThread):
                 self.row_state.emit(row, "st_cancelled", "")
                 break
             except ValueError as ex:
-                key = {"no_video": "err_no_video", "no_audio": "err_no_audio"}.get(str(ex), "st_error")
+                key = {"no_video": "err_no_video", "no_audio": "err_no_audio",
+                       "start_beyond": "err_start_beyond"}.get(str(ex), "st_error")
                 self.row_state.emit(row, "st_error", tr(key))
                 bad += 1
                 continue
@@ -303,9 +304,14 @@ class ConvertPage(QWidget):
                               ("frame_every", tr("frame_every"), self.frame_every),
                               ("frame_fmt", tr("img_format"), self.frame_fmt),
                               ("time", f"{tr('start_time')} / {tr('end_time')}", self.w_time),
-                              ("encoder", tr("encoder"), self.encoder), ("out", tr("out_folder"), self.out_dir)):
+                              ("encoder", tr("encoder"), self.encoder)):
             self.form.addRow(label, w)
             self.rows[key] = w
+        # papka yo'li uzun: yorliq ustida, maydon butun kenglikda (tor panelda kesilib qolmasin)
+        self.form.addRow(QLabel(tr("out_folder")))
+        self.form.addRow(self.out_dir)
+        self.out_dir.setToolTip(tr("out_same"))
+        self.rows["out"] = self.out_dir
         card.add(self.desc)
         card.add(self.form)
         card.lay.addStretch(1)
@@ -371,7 +377,12 @@ class ConvertPage(QWidget):
     # ------------------------------------------------------------------ sozlamalar
     def _load_job(self):
         d = self.win.settings.get("job", {}) if self.win.settings else {}
-        j = P.Job(**{k: v for k, v in d.items() if k in P.Job.__dataclass_fields__})
+        if not isinstance(d, dict):
+            d = {}
+        base = P.Job()
+        # buzilgan sozlamalar: turi mos kelmagan qiymatlar standart bilan almashtiriladi
+        j = P.Job(**{k: v for k, v in d.items() if k in P.Job.__dataclass_fields__
+                     and type(v) is type(getattr(base, k)) or (k == "frame_every" and type(v) is int)})
         _set_data(self.preset, j.preset)
         self.quality.setValue(j.quality)
         _set_data(self.height_cb, j.height)
@@ -385,7 +396,8 @@ class ConvertPage(QWidget):
         _set_data(self.rotate, j.rotate)
         self.frame_every.setValue(j.frame_every)
         self.frame_fmt.setCurrentText(j.frame_fmt)
-        self.out_dir.set_path(self.win.settings.get("out_dir", "") if self.win.settings else "")
+        od = self.win.settings.get("out_dir", "") if self.win.settings else ""
+        self.out_dir.set_path(od if isinstance(od, str) else "")
 
     def current_job(self, strict: bool = False) -> P.Job:
         try:
@@ -448,6 +460,7 @@ class ConvertPage(QWidget):
 
         def done(lst):
             cur = self.win.settings.get("encoder", "auto") if self.win.settings else "auto"
+            cur = cur if isinstance(cur, str) else "auto"
             for e in lst:
                 self.encoder.addItem(e, e)
             _set_data(self.encoder, cur)
@@ -599,7 +612,11 @@ class ConvertPage(QWidget):
             return
         out_dir = self.out_dir.path()
         if out_dir:
-            os.makedirs(out_dir, exist_ok=True)
+            try:
+                os.makedirs(out_dir, exist_ok=True)
+            except (OSError, ValueError):
+                error(self, tr("err_out_dir", p=out_dir))
+                return
         if self.win.settings:
             self.win.settings.set("out_dir", out_dir)
         for r in rows:
@@ -861,6 +878,9 @@ class MergePage(QWidget):
             return
         if not Path(out).suffix:
             out += ".mp4"
+        if any(os.path.normcase(os.path.abspath(out)) == os.path.normcase(os.path.abspath(f)) for f in files):
+            warn(self, tr("merge_out_is_input"))      # manba fayl ustiga yozilmasin
+            return
         infos = [self.infos[f] for f in files]
         lst = os.path.join(tempfile.gettempdir(), "vk_concat_list.txt")
         Path(lst).write_text(P.concat_list_text(files), encoding="utf-8")
