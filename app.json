@@ -1,7 +1,7 @@
 {
   "slug": "video-konvertor",
   "exe_name": "FFmpegQobigi",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "accent": "#e11d48",
   "folder": "FFmpeg qobig'i",
   "name": {
